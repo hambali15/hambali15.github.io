@@ -136,8 +136,7 @@ body {
 .contact h1:hover {
     background-position: right center;
     background-size: 200% auto;
-    -webkit-animation: pulse 2s infinite;
-    animation: pulse512 2s infinite;
+    animation: pulse512 infinite infinite;
 }
 
 @keyframes pulse512 {
@@ -238,6 +237,24 @@ body {
 .works .row .work-card {
     margin-right: 1rem;
     margin-top: 1rem;
+    position: relative;
+}
+
+.works .row .work-card::before {
+    opacity: 0;
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 15rem;
+    height: 15rem;
+    background: linear-gradient(180deg, transparent, #ff2288, #387ef0);
+    transition: 300ms;
+    animation-play-state: paused;
+}
+
+.works .row .work-card:hover::before {
+    opacity: 1;
+    animation-play-state: running;
 }
 
 .works .row .work-card img {
@@ -247,9 +264,26 @@ body {
     border-radius: 0.5rem;
 }
 
+.works .row .work-card h3 {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    right: 40%;
+    display: inline-block;
+    text-align: center;
+    margin-top: -10px;
+    z-index: 99999;
+    opacity: 0;
+}
+
+.works .row .work-card:hover h3 {
+    opacity: 1;
+}
+
 /* Contact */
 .contact {
-    background-color: rgba(227, 246, 255, 0.4);
+    background-color: rgba(227, 246, 255, 0.5);
     padding: 4.5rem 0 8rem;
 }
 
